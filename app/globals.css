@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+@theme {
+  /* Our Antique Scripture Palette */
+  --color-gold: #C4923E;       
+  --color-gold-glow: #8B5A2B;  
+  --color-paper: #d4c7b0;      
+  
+  /* Your custom fonts */
+  --font-sans: var(--font-inter), sans-serif;
+  --font-cinzel: var(--font-cinzel), serif;
+  --font-space: var(--font-space), sans-serif;
+  --font-federo: var(--font-federo), cursive;
+}
+
+@layer base {
+  html, body {
+    max-width: 100vw;
+    overflow-x: hidden;
+    background-color: #080705;
+    color: var(--color-paper);
+    
+    /* The Cinematic Battlefield Background */
+    background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('/kurukshetra-bg2.png');
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  /* Sleek Antique Bronze Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #050505;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, transparent, #C4923E, #8B5A2B, transparent);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(196, 146, 62, 0.2);
+  }
+}
