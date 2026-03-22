@@ -41,3 +41,23 @@
     box-shadow: 0 0 10px rgba(196, 146, 62, 0.2);
   }
 }
+
+
+/* --- PRODUCTION GRADE MARQUEE ANIMATION --- */
+@keyframes marquee-ultra-fast {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee-ultra-fast {
+  display: flex;
+  white-space: nowrap;
+  /* Change 10s to 6s if you want it to fly */
+  animation: marquee-ultra-fast 10s linear infinite; 
+  will-change: transform;
+}
+
+/* Pause animation on hover for better UX */
+.animate-marquee-ultra-fast:hover {
+  animation-play-state: paused;
+}

@@ -1,39 +1,31 @@
 "use client";
 
+import React from "react";
+
 export default function Marquee() {
-  const text = "THE DHARMA OF CODE • 30 HOURS OF INNOVATION • ENTER THE ARENA • ";
+  const baseText = "THE DHARMA OF CODE • 30 HOURS OF INNOVATION • ENTER THE ARENA • ";
+  
+  // We repeat the text 10 times to create a massive continuous string
+  const repeatedText = Array(10).fill(baseText).join("");
 
   return (
-    <div className="relative w-full overflow-hidden py-3 z-50 shadow-[0_0_50px_rgba(0,0,0,0.9)] -rotate-2 scale-[1.02] origin-center"
-         style={{ backgroundColor: "#5A0A0A", borderTop: "2px solid rgba(196, 146, 62, 0.6)", borderBottom: "2px solid rgba(196, 146, 62, 0.6)" }}>
+    <div className="relative w-full overflow-hidden py-4 z-50 shadow-[0_-10px_40px_rgba(158,27,27,0.4)] -rotate-1 scale-[1.05] origin-center bg-gradient-to-r from-[#800000] via-[#C8102E] to-[#800000] border-y border-white/20 backdrop-blur-sm select-none">
       
-      {/* Texture overlay for an ancient fabric/leather feel */}
-      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/dark-leather.png')] opacity-40 mix-blend-multiply pointer-events-none" />
+      {/* GLASSY TOP HIGHLIGHT */}
+      <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/50 to-transparent" />
       
-      {/* Glowing center highlight */}
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#C4923E]/20 to-transparent pointer-events-none" />
-      
-      <div className="flex whitespace-nowrap animate-marquee">
-        <span className="font-space text-base md:text-xl font-black uppercase tracking-[0.4em]"
-              style={{ 
-                color: "#C4923E",
-                /* This gives the font that glowing, burning artifact look */
-                textShadow: "0 0 10px rgba(196, 146, 62, 0.9), 0 0 20px rgba(196, 146, 62, 0.5)"
-              }}>
-          {text + text + text}
+      {/* CINEMATIC GRAIN OVERLAY */}
+      <div className="absolute inset-0 opacity-[0.06] bg-[url('https://res.cloudinary.com/dlb7qps6p/image/upload/v1677610014/noise_fpxrpk.png')] pointer-events-none" />
+
+      {/* THE SCROLLING CONTAINER */}
+      <div className="animate-marquee-ultra-fast cursor-pointer">
+        <span className="font-outfit text-base md:text-xl font-black uppercase tracking-[0.3em] text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)] pr-4">
+          {repeatedText}
         </span>
       </div>
 
-      <style jsx>{`
-        @keyframes marquee {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        .animate-marquee {
-          display: flex;
-          animation: marquee 40s linear infinite;
-        }
-      `}</style>
+      {/* BOTTOM HIGHLIGHT */}
+      <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-black/20 to-transparent" />
     </div>
   );
 }
