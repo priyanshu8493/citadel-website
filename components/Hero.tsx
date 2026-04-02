@@ -1,4 +1,5 @@
 "use client";
+import React from "react"
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import Marquee from "./Marquee";
@@ -29,7 +30,20 @@ function useCountdown(targetDate: string) {
 export default function Hero() {
   const timeLeft = useCountdown("2026-05-15T00:00:00");
   const [hasMounted, setHasMounted] = useState(false);
-  useEffect(() => { setHasMounted(true); }, []);
+
+  useEffect(() => {
+    setHasMounted(true);
+
+    // Load Devfolio SDK
+    const script = document.createElement("script");
+    script.src = "https://apply.devfolio.co/v2/sdk.js";
+    script.async = true;
+    script.defer = true;
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
 
   return (
     <section className="relative h-screen w-full flex flex-col items-center overflow-x-hidden bg-transparent antialiased">
@@ -44,27 +58,25 @@ export default function Hero() {
       <div className="flex-grow flex flex-col items-center justify-center z-30 px-6 max-w-6xl w-full text-center pb-20">
         <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
           
-          {/* UPDATED: CITADEL Name with Premium "Satin Bronze" Metallic Effect */}
+          {/* CITADEL Name with Premium "Satin Bronze" Metallic Effect */}
           <h1 
             className="font-outfit text-6xl md:text-8xl lg:text-[9.5rem] font-black tracking-tighter leading-[0.8] mb-4"
             style={{
-              // Multi-stop gradient for a high-end metallic finish
               background: "linear-gradient(180deg, #BD9354 0%, #FCEECA 30%, #C4923E 50%, #8B5A2B 75%, #4A2511 100%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
-              // Sharp cast-shadow instead of a glow makes it look "heavy" and physical
               filter: "drop-shadow(0px 10px 4px rgba(0, 0, 0, 0.5)) drop-shadow(0px 25px 40px rgba(0, 0, 0, 0.9))"
             }}
           >
             CITADEL
           </h1>
 
-          {/* VERSION MARKER - Clean and Subtle */}
+          {/* VERSION MARKER */}
           <div className="text-xl md:text-3xl font-outfit font-black tracking-[0.4em] mb-4 text-[#C4923E]/80 uppercase italic">
             v 1.0
           </div>
           
-          {/* SLOGAN - White with Bronze emphasis */}
+          {/* SLOGAN */}
           <h2 className="font-outfit text-3xl md:text-5xl font-black mb-8 uppercase tracking-tight text-[#f2f2f2] drop-shadow-xl">
             the dharma of <span className="text-[#C4923E]">code.</span>
           </h2>
@@ -90,14 +102,13 @@ export default function Hero() {
               ))}
             </div>
 
-            {/* REGISTER BUTTON */}
-            <a 
-              href="http://citadel-hackathon.devfolio.co/"
-              target="_blank"
-              className="px-12 py-4 bg-[#276EF1] text-white font-outfit text-[14px] uppercase tracking-[0.1em] font-black rounded-xl shadow-[0_15px_40px_rgba(39,110,241,0.25)] hover:bg-[#1a5fdf] transition-all active:scale-95"
-            >
-              Register on Devfolio
-            </a>
+            {/* DEVFOLIO APPLY BUTTON */}
+            <div
+              className="apply-button"
+              data-hackathon-slug="citadel-hackathon"
+              data-button-theme="dark"
+              style={{ height: "44px", width: "312px" }}
+            />
             
             {/* DISCORD BUTTON */}
             <button className="flex items-center justify-center gap-3 px-10 py-4 bg-transparent border border-[#C4923E]/40 text-[#C4923E] font-outfit text-[14px] uppercase tracking-[0.1em] font-black rounded-xl hover:bg-[#C4923E]/5 transition-all shadow-xl">
