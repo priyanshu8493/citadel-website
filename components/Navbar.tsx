@@ -27,7 +27,7 @@ export default function Navbar() {
           />
         </div>
 
-        <div className="relative w-16 h-16 md:w-20 md:h-20 shrink-0">
+        <div className="relative w-12 h-12 md:w-18 md:h-18 shrink-0">
           <Image
             src="/citadel-logo1.png"
             alt="Citadel Logo"
@@ -38,7 +38,7 @@ export default function Navbar() {
           />
         </div>
 
-        <div className="relative w-16 h-16 md:w-20 md:h-20 shrink-0">
+        <div className="relative w-16 h-16 md:w-18 md:h-18 shrink-0">
           <Image
             src="/iic.png"
             alt="IIC Logo"
